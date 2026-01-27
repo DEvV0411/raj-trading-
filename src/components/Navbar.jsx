@@ -1,12 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion'; // eslint-disable-line no-unused-vars
 import './Navbar.css';
 
 const Navbar = () => {
   const location = useLocation();
   const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   
   const isActive = (path) => location.pathname === path ? 'active' : '';
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -17,24 +27,43 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="navbar fade-in">
-      <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
-        <Link to="/" className="nav-brand" onClick={closeMenu}>Raj Trading</Link>
+    <motion.nav 
+      className={`navbar ${scrolled ? 'scrolled' : ''}`}
+      initial={{ y: -100, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+    >
+      <div className="container nav-container">
+        <Link to="/" className="nav-brand" onClick={closeMenu}>
+          Raj Trading <span className="brand-dot">.</span>
+        </Link>
         
         <div className={`nav-toggle ${isOpen ? 'open' : ''}`} onClick={toggleMenu}>
-          <span className="bar"></span>
           <span className="bar"></span>
           <span className="bar"></span>
         </div>
 
         <ul className={`nav-links ${isOpen ? 'active' : ''}`}>
-          <li><Link to="/" className={`nav-link ${isActive('/')}`} onClick={closeMenu}>Home</Link></li>
-          <li><Link to="/products" className={`nav-link ${isActive('/products')}`} onClick={closeMenu}>Products</Link></li>
-          <li><Link to="/about" className={`nav-link ${isActive('/about')}`} onClick={closeMenu}>About</Link></li>
-          <li><Link to="/contact" className={`nav-link ${isActive('/contact')}`} onClick={closeMenu}>Contact</Link></li>
+          {['/', '/products', '/about', '/contact'].map((path) => (
+            <li key={path}>
+              <Link 
+                to={path} 
+                className={`nav-link ${isActive(path)}`} 
+                onClick={closeMenu}
+              >
+                {path === '/' ? 'Home' : path.slice(1).charAt(0).toUpperCase() + path.slice(2)}
+                {isActive(path) && (
+                  <motion.div 
+                    layoutId="underline" 
+                    className="nav-underline"
+                  />
+                )}
+              </Link>
+            </li>
+          ))}
         </ul>
       </div>
-    </nav>
+    </motion.nav>
   );
 };
 

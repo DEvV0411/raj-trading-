@@ -1,0 +1,87 @@
+.about-page {
+  padding: 8rem 1rem 6rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.about-header {
+  text-align: center;
+  margin-bottom: 6rem;
+}
+
+.about-title {
+  font-size: 4rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+
+.about-subtitle {
+  color: var(--text-secondary);
+  font-size: 1.2rem;
+}
+
+.about-grid {
+  display: grid;
+  gap: 4rem;
+}
+
+.about-section-title {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  color: var(--text-primary);
+}
+
+.about-text {
+  color: var(--text-secondary);
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+}
+
+.philosophy-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.philosophy-item {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.philosophy-number {
+  color: white;
+  background: var(--accent-purple);
+  width: 30px;
+  height: 30px;
+  min-width: 30px; /* Prevent shrinking */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-weight: bold;
+  margin-top: 4px; /* Align with text */
+}
+
+@media (max-width: 768px) {
+  .about-page {
+    padding: 6rem 1rem 4rem; /* Reduced top padding */
+  }
+
+  .about-title {
+    font-size: 2.5rem;
+  }
+
+  .about-header {
+    margin-bottom: 3rem;
+  }
+
+  .about-grid {
+    gap: 3rem;
+  }
+}

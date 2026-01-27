@@ -1,44 +1,69 @@
 import React from 'react';
 import PageTransition from '../components/PageTransition';
+import { motion } from 'framer-motion'; // eslint-disable-line no-unused-vars
+import './AboutPage.css';
 
 const AboutPage = () => {
   return (
     <PageTransition>
-      <div className="container" style={{ padding: '4rem 1rem 6rem', maxWidth: '900px' }}>
-        <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
-          <h1 style={{ fontSize: '3rem', fontWeight: 300, marginBottom: '1.5rem' }}>About Raj Trading</h1>
-          <div style={{ width: '60px', height: '2px', backgroundColor: 'var(--accent)', margin: '0 auto' }}></div>
-        </div>
+      <div className="container about-page">
+        <motion.div 
+          className="about-header"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          <h1 className="about-title">
+            Not Your Average <br />
+            <span className="text-gradient">Prop Shop.</span>
+          </h1>
+          <p className="about-subtitle">EST. 2024 • MUMBAI</p>
+        </motion.div>
 
-        <div style={{ display: 'grid', gap: '3rem' }}>
-          <section>
-            <h2 style={{ fontSize: '1.5rem', fontWeight: 500, marginBottom: '1rem' }}>Our Story</h2>
-            <p style={{ color: 'var(--text-secondary)', lineHeight: '1.8', marginBottom: '1.5rem' }}>
-              Established with a passion for excellence, Raj Trading has been a trusted name in the jewellery packaging and display industry. 
-              We understand that jewellery is not just a product but an emotion, and its presentation should reflect its true worth.
+        <div className="about-grid">
+          <motion.section 
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="about-section-title">The Lore 📖</h2>
+            <p className="about-text">
+              We started Raj Trading because we were bored of the same old dusty velvet displays. 
+              Jewellery is art. It deserves a stage that screams "expensive" (even if the budget says otherwise).
             </p>
-            <p style={{ color: 'var(--text-secondary)', lineHeight: '1.8' }}>
-              Over the years, we have evolved from a small trading unit to a comprehensive supplier of premium display props, serving showrooms and boutiques across India.
+            <p className="about-text">
+              From a small garage in Mumbai to supplying the biggest showrooms, we've kept one thing constant: 
+              <strong style={{ color: 'var(--text-primary)' }}> The Vibe.</strong>
             </p>
-          </section>
+          </motion.section>
 
-          <section style={{ backgroundColor: 'var(--bg-secondary)', padding: '3rem', borderRadius: 'var(--radius-md)' }}>
-            <h2 style={{ fontSize: '1.5rem', fontWeight: 500, marginBottom: '1rem' }}>Our Philosophy</h2>
-            <ul style={{ listStyle: 'none' }}>
-              <li style={{ marginBottom: '1rem', display: 'flex', gap: '1rem' }}>
-                <span style={{ color: 'var(--accent)' }}>&#10003;</span>
-                <span style={{ color: 'var(--text-secondary)' }}><strong>Aesthetics First:</strong> We believe beauty lies in details.</span>
-              </li>
-              <li style={{ marginBottom: '1rem', display: 'flex', gap: '1rem' }}>
-                <span style={{ color: 'var(--accent)' }}>&#10003;</span>
-                <span style={{ color: 'var(--text-secondary)' }}><strong>Quality Commitment:</strong> Never compromising on material or finish.</span>
-              </li>
-              <li style={{ display: 'flex', gap: '1rem' }}>
-                <span style={{ color: 'var(--accent)' }}>&#10003;</span>
-                <span style={{ color: 'var(--text-secondary)' }}><strong>Customer Centric:</strong> Tailored solutions for your brand identity.</span>
-              </li>
+          <motion.section 
+            className="glass-panel"
+            style={{ padding: '3rem' }}
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="about-section-title">Our Philosophy 🧘‍♂️</h2>
+            <ul className="philosophy-list">
+              {[
+                { title: "Aesthetics First", desc: "If it's not Instagrammable, we don't want it." },
+                { title: "Quality Check", desc: "We touch grass (and velvet) so you don't have to worry about finish." },
+                { title: "You-Centric", desc: "Your brand is the main character. We're just the hype man." }
+              ].map((item, index) => (
+                <li key={index} className="philosophy-item">
+                  <span className="philosophy-number">
+                    {index + 1}
+                  </span>
+                  <span style={{ color: 'var(--text-secondary)', fontSize: '1.1rem' }}>
+                    <strong style={{ color: 'var(--text-primary)' }}>{item.title}:</strong> {item.desc}
+                  </span>
+                </li>
+              ))}
             </ul>
-          </section>
+          </motion.section>
         </div>
       </div>
     </PageTransition>

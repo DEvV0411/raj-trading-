@@ -1,9 +1,14 @@
 import React from 'react';
 import './ProductCard.css';
+import { motion } from 'framer-motion';
 
 const ProductCard = ({ product, onEnquiry }) => {
   return (
-    <div className="product-card fade-in">
+    <motion.div 
+      className="product-card"
+      whileHover={{ y: -10, scale: 1.02 }}
+      transition={{ type: "spring", stiffness: 300, damping: 20 }}
+    >
       <div className="product-image-wrapper">
         <img 
           src={product.image} 
@@ -11,6 +16,14 @@ const ProductCard = ({ product, onEnquiry }) => {
           className="product-image" 
           loading="lazy"
         />
+        <div className="card-overlay">
+          <button 
+            className="btn-quick-view"
+            onClick={() => onEnquiry(product)}
+          >
+            👀 Quick View
+          </button>
+        </div>
       </div>
       <div className="product-info">
         <div className="product-category">{product.category}</div>
@@ -19,10 +32,10 @@ const ProductCard = ({ product, onEnquiry }) => {
           className="btn-enquiry"
           onClick={() => onEnquiry(product)}
         >
-          Enquiry
+          Enquiry ⚡
         </button>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

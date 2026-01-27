@@ -1,22 +1,24 @@
-@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;800&display=swap");
 
 :root {
-  /* Colors */
-  --bg-primary: #ffffff;
-  --bg-secondary: #f9f9f7; /* Warm beige/grey tint */
-  --bg-modal: rgba(255, 255, 255, 0.95);
+  /* Gen-Z Palette */
+  --bg-primary: #FDFBF7; /* Creamy off-white */
+  --bg-secondary: #F0F4F8; /* Cool soft blue/grey */
+  --bg-glass: rgba(255, 255, 255, 0.7);
+  
+  --text-primary: #1A1A1A; /* Stark black */
+  --text-secondary: #5A5A5A;
+  --text-accent: #6C5CE7; /* Electric Purple */
 
-  --text-primary: #2d2d2d;
-  --text-secondary: #666666;
-  --text-light: #888888;
-
-  --accent: #d4af37; /* Subtle Gold for detailed accents, not too flashy */
-  --accent-soft: #e5e0d8;
-  --border-light: #f0f0f0;
-
-  --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.03);
-  --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.05);
-  --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.08);
+  /* Vibey Accents */
+  --accent-purple: #6C5CE7;
+  --accent-pink: #FD79A8;
+  --accent-green: #00B894;
+  --accent-yellow: #FDCB6E;
+  
+  /* Gradients */
+  --gradient-main: linear-gradient(135deg, #6C5CE7 0%, #FD79A8 100%);
+  --gradient-soft: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(108, 92, 231, 0.05) 100%);
 
   /* Spacing */
   --spacing-xs: 0.5rem;
@@ -26,10 +28,17 @@
   --spacing-xl: 8rem;
 
   /* Layout */
-  --max-width: 1200px;
-  --radius-sm: 8px;
-  --radius-md: 16px;
-  --radius-lg: 24px;
+  --max-width: 1400px; /* Wider for that expansive feel */
+  --radius-sm: 12px;
+  --radius-md: 24px;
+  --radius-lg: 40px;
+  --radius-pill: 9999px;
+
+  /* Shadows */
+  --shadow-sm: 0 4px 20px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 12px 40px rgba(108, 92, 231, 0.15); /* Colored shadow */
+  --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.1);
+  --shadow-neon: 0 0 20px rgba(108, 92, 231, 0.4);
 }
 
 * {
@@ -44,12 +53,16 @@ body {
   color: var(--text-primary);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(253, 121, 168, 0.03) 0%, transparent 20%),
+    radial-gradient(circle at 90% 80%, rgba(108, 92, 231, 0.03) 0%, transparent 20%);
 }
 
 a {
   text-decoration: none;
   color: inherit;
-  transition: opacity 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Bouncy transition */
 }
 
 ul {
@@ -66,6 +79,19 @@ button {
 input,
 textarea {
   font-family: inherit;
+  background: var(--bg-secondary);
+  border: 2px solid transparent;
+  padding: var(--spacing-sm);
+  border-radius: var(--radius-sm);
+  transition: all 0.3s ease;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--accent-purple);
+  background: white;
+  box-shadow: var(--shadow-neon);
 }
 
 /* Utilities */
@@ -75,18 +101,35 @@ textarea {
   padding: 0 var(--spacing-md);
 }
 
-.fade-in {
-  animation: fadeIn 1s ease-out forwards;
-  opacity: 0;
+.glass-panel {
+  background: var(--bg-glass);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: var(--radius-md);
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.text-gradient {
+  background: var(--gradient-main);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #E0E0E0;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-purple);
 }

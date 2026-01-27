@@ -1,67 +1,77 @@
 .navbar {
+  position: fixed;
+  top: 1.5rem;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 0 var(--spacing-md);
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  display: flex;
+  justify-content: center;
+}
+
+.nav-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.2rem 2rem;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  background-color: rgba(255, 255, 255, 0.85); /* Semi-transparent white */
-  backdrop-filter: blur(12px); /* Blurred glass effect */
-  -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-  margin-bottom: var(--spacing-lg);
-  transition: all 0.3s ease;
   width: 100%;
-  max-width: 100%; /* Ensure it spans full width if parent allows */
+  max-width: var(--max-width);
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 1rem 2rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: var(--shadow-sm);
 }
 
-/* Adjust container usage if Navbar is direct child of body/app, 
-   but since it has 'container' class in JSX, we might want to override max-width behavior 
-   ONLY for the navbar background to extend, but content to stay centered.
-   Actually, usually 'container' class limits width. 
-   To make the GLASS effect span full width, we should remove 'container' from the nav element in JSX 
-   and put it inside. But for now, let's just make the sticky header nice within the container constraints 
-   OR assume the user wants a full-width header. Let's try to match the screenshot which looked centered.
-   We'll keep 'container' behavior but add the blur.
-*/
+.navbar.scrolled .nav-container {
+  background: rgba(255, 255, 255, 0.85);
+  box-shadow: var(--shadow-md);
+}
 
 .nav-brand {
-  font-size: 1.8rem; /* Slightly larger */
-  font-weight: 600;
-  letter-spacing: -0.01em;
+  font-size: 1.5rem;
+  font-weight: 800;
   color: var(--text-primary);
-  font-family: 'Playfair Display', serif; /* Enforce serif */
+  letter-spacing: -0.03em;
+  display: flex;
+  align-items: center;
+}
+
+.brand-dot {
+  color: var(--accent-purple);
+  font-size: 2rem;
+  line-height: 0.5;
 }
 
 .nav-links {
   display: flex;
-  gap: 3rem;
+  gap: 2.5rem;
+  align-items: center;
 }
 
 .nav-link {
   color: var(--text-secondary);
-  font-size: 0.95rem;
+  font-weight: 600;
   position: relative;
+  font-size: 1rem;
+  transition: color 0.3s ease;
 }
 
-.nav-link:hover {
+.nav-link:hover,
+.nav-link.active {
   color: var(--text-primary);
 }
 
-.nav-link::after {
-  content: '';
+.nav-underline {
   position: absolute;
-  bottom: -4px;
+  bottom: -6px;
   left: 0;
-  width: 0;
-  height: 1px;
-  background-color: var(--text-primary);
-  transition: width 0.3s ease;
-}
-
-.nav-link:hover::after {
-  width: 100%;
+  right: 0;
+  height: 3px;
+  background: var(--gradient-main);
+  border-radius: 4px;
 }
 
 /* Mobile Toggle */
@@ -74,54 +84,64 @@
 }
 
 .bar {
-  width: 25px;
-  height: 2px;
+  width: 24px;
+  height: 2.5px;
   background-color: var(--text-primary);
-  transition: all 0.3s ease;
+  border-radius: 2px;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-/* Mobile Active State */
 .nav-toggle.open .bar:nth-child(1) {
   transform: rotate(45deg) translate(5px, 6px);
+  background-color: var(--accent-purple);
 }
 
 .nav-toggle.open .bar:nth-child(2) {
-  opacity: 0;
-}
-
-.nav-toggle.open .bar:nth-child(3) {
   transform: rotate(-45deg) translate(5px, -6px);
+  background-color: var(--accent-pink);
 }
 
 @media (max-width: 768px) {
+  .navbar {
+    top: 1rem;
+    padding: 0 1rem;
+  }
+  
+  .nav-container {
+    padding: 0.8rem 1.5rem;
+  }
+
   .nav-toggle {
     display: flex;
   }
 
   .nav-links {
     position: fixed;
-    top: 0;
-    right: 0;
-    height: 100vh;
-    width: 70%;
-    background: rgba(255, 255, 255, 0.98);
-    backdrop-filter: blur(15px);
+    top: 5rem; /* Below the floating nav */
+    left: 1rem;
+    right: 1rem;
+    background: var(--bg-primary);
+    padding: 2rem;
+    border-radius: var(--radius-lg);
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    gap: 2.5rem;
-    transform: translateX(100%);
-    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-    box-shadow: -10px 0 30px rgba(0,0,0,0.1);
-    z-index: 150;
+    gap: 2rem;
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-20px);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 1px solid rgba(0,0,0,0.05);
   }
 
   .nav-links.active {
-    transform: translateX(0);
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: all;
   }
 
   .nav-link {
-    font-size: 1.2rem;
-    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: var(--text-primary);
   }
 }

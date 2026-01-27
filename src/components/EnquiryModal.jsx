@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './EnquiryModal.css';
 import { db } from '../firebase';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion'; // eslint-disable-line no-unused-vars
 
 const EnquiryModal = ({ product, isOpen, onClose }) => {
   const [formData, setFormData] = useState({
@@ -51,56 +51,43 @@ const EnquiryModal = ({ product, isOpen, onClose }) => {
       {isOpen && (
         <div className="modal-overlay" onClick={onClose}>
           <motion.div 
-            className="modal-content" 
+            className="modal-content glass-panel" 
             onClick={e => e.stopPropagation()}
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.95 }}
-            transition={{ duration: 0.2 }}
+            initial={{ opacity: 0, scale: 0.9, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.9, y: 20 }}
+            transition={{ type: "spring", duration: 0.5 }}
           >
             <button className="btn-close" onClick={onClose}>&times;</button>
             
             {status === 'success' ? (
               <div className="success-message">
-                <span className="success-icon">&#10003;</span>
-                <h3 className="success-title">Thank You</h3>
+                <span className="success-icon">🎉</span>
+                <h3 className="success-title">We're On It!</h3>
                 <p className="success-desc">
-                  We have received your enquiry for <strong>{product.name}</strong>. 
-                  Our team will contact you shortly.
+                  Enquiry for <strong>{product.name}</strong> sent successfully. 
+                  Sit back, we'll hit you up shortly!
                 </p>
               </div>
             ) : (
               <div>
-                <h2 className="modal-title">Enquire Now</h2>
-                <p className="modal-subtitle">Interest in <span style={{color: 'var(--text-primary)', fontWeight: 500}}>{product.name}</span></p>
+                <h2 className="modal-title">Let's Talk Props</h2>
+                <p className="modal-subtitle">Eying the <span style={{color: 'var(--accent-purple)', fontWeight: 700}}>{product.name}</span>? Good taste.</p>
                 
                 {/* Product Details Section */}
-                <div style={{ backgroundColor: 'var(--bg-secondary)', padding: '1.5rem', borderRadius: '8px', marginBottom: '1.5rem', fontSize: '0.9rem' }}>
-                  <p style={{ marginBottom: '0.5rem', fontWeight: 500, color: 'var(--text-light)', fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Description</p>
-                  <p style={{ color: 'var(--text-secondary)', marginBottom: '1rem', lineHeight: '1.6' }}>{product.description}</p>
-                  
-                  {product.specs && (
-                    <>
-                      <div style={{ height: '1px', backgroundColor: 'var(--border-light)', margin: '1rem 0' }}></div>
-                      <p style={{ marginBottom: '0.5rem', fontWeight: 500, color: 'var(--text-light)', fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Specifications</p>
-                      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.5rem' }}>
-                        {Object.entries(product.specs).map(([key, value]) => (
-                          <div key={key}>
-                            <span style={{ color: 'var(--text-primary)', fontWeight: 500 }}>{key}:</span> <span style={{ color: 'var(--text-secondary)' }}>{value}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </>
-                  )}
+                <div style={{ backgroundColor: 'rgba(255,255,255,0.5)', padding: '1.2rem', borderRadius: 'var(--radius-sm)', marginBottom: '1.5rem', fontSize: '0.9rem', border: '1px solid rgba(0,0,0,0.05)' }}>
+                  <p style={{ marginBottom: '0.5rem', fontWeight: 600, color: 'var(--text-primary)', fontSize: '0.8rem', textTransform: 'uppercase' }}>What you're asking about:</p>
+                  <p style={{ color: 'var(--text-secondary)', marginBottom: '0.5rem', lineHeight: '1.5' }}>{product.description}</p>
                 </div>
 
                 <form onSubmit={handleSubmit}>
                   <div className="form-group">
-                    <label className="form-label">Full Name</label>
+                    <label className="form-label">Your Name</label>
                     <input 
                       type="text" 
                       name="name" 
                       required
+                      placeholder="Jane Doe"
                       className="form-input"
                       value={formData.name}
                       onChange={handleChange}
@@ -108,11 +95,12 @@ const EnquiryModal = ({ product, isOpen, onClose }) => {
                   </div>
                   
                   <div className="form-group">
-                    <label className="form-label">Email Address</label>
+                    <label className="form-label">Email</label>
                     <input 
                       type="email" 
                       name="email" 
                       required
+                      placeholder="jane@example.com"
                       className="form-input"
                       value={formData.email}
                       onChange={handleChange}
@@ -120,11 +108,12 @@ const EnquiryModal = ({ product, isOpen, onClose }) => {
                   </div>
                   
                   <div className="form-group">
-                    <label className="form-label">Phone Number</label>
+                    <label className="form-label">Phone</label>
                     <input 
                       type="tel" 
                       name="phone" 
                       required
+                      placeholder="+91 98765..."
                       className="form-input"
                       value={formData.phone}
                       onChange={handleChange}
@@ -132,7 +121,7 @@ const EnquiryModal = ({ product, isOpen, onClose }) => {
                   </div>
                   
                   <button type="submit" className="btn-submit" disabled={status === 'submitting'}>
-                    {status === 'submitting' ? 'Sending...' : 'Send Enquiry'}
+                    {status === 'submitting' ? 'Sending... 🚀' : 'Send It 🚀'}
                   </button>
                 </form>
               </div>

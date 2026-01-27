@@ -2,14 +2,15 @@ import React from 'react';
 import ProductGrid from '../components/ProductGrid';
 import { products } from '../data/products';
 import PageTransition from '../components/PageTransition';
+import './ProductsPage.css';
 
 const ProductsPage = ({ onEnquiry }) => {
   return (
     <PageTransition>
-      <div className="container" style={{ padding: '2rem 1rem 4rem' }}>
-        <header style={{ marginBottom: '3rem', textAlign: 'center' }}>
-          <h1 style={{ fontSize: '2.5rem', fontWeight: 300, marginBottom: '1rem' }}>Our Collection</h1>
-          <p style={{ color: 'var(--text-secondary)', maxWidth: '600px', margin: '0 auto' }}>
+      <div className="container products-page">
+        <header className="products-header">
+          <h1 className="products-title">Our Collection</h1>
+          <p className="products-subtitle">
             Explore our complete range of jewellery displays, organizers, and props.
           </p>
         </header>

@@ -1,0 +1,100 @@
+.contact-page {
+  padding: 9rem 1rem 4rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.contact-title {
+  font-size: 2.5rem;
+  font-weight: 300;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.contact-subtitle {
+  text-align: center;
+  color: var(--text-secondary);
+  margin-bottom: 4rem;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 4rem;
+}
+
+.contact-section-title {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+}
+
+.contact-info-group {
+  margin-bottom: 2rem;
+}
+
+.contact-info-label {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-primary);
+}
+
+.contact-info-text {
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.contact-form-card {
+  background-color: var(--bg-secondary);
+  padding: 2rem;
+  border-radius: var(--radius-md);
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.form-input, .form-textarea {
+  width: 100%;
+  padding: 0.8rem;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  font-family: inherit;
+}
+
+.btn-send {
+  width: 100%;
+  padding: 1rem;
+  background-color: var(--text-primary);
+  color: white;
+  border-radius: 4px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: opacity 0.3s;
+}
+
+.btn-send:hover {
+  opacity: 0.9;
+}
+
+@media (max-width: 768px) {
+  .contact-page {
+    padding: 10rem 1rem 2rem; /* Added extra top padding for fixed navbar */
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr; /* Stack on mobile */
+    gap: 3rem;
+  }
+  
+  .contact-title {
+    font-size: 2rem;
+  }
+}
