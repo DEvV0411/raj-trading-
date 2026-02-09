@@ -30,19 +30,28 @@ const EnquiryModal = ({ product, isOpen, onClose }) => {
     e.preventDefault();
     setStatus('submitting');
     
+    // Create a timeout promise
+    const timeout = new Promise((_, reject) => {
+        setTimeout(() => reject(new Error('Request timed out')), 10000);
+    });
+
     try {
-      await addDoc(collection(db, "enquiries"), {
-        ...formData,
-        productName: product.name,
-        productId: product.id,
-        createdAt: serverTimestamp()
-      });
+      // Race the addDoc against the timeout
+      await Promise.race([
+        addDoc(collection(db, "enquiries"), {
+          ...formData,
+          productName: product.name,
+          productId: product.id,
+          createdAt: serverTimestamp()
+        }),
+        timeout
+      ]);
       setStatus('success');
     } catch (error) {
       console.error("Error adding document: ", error);
-      // Even if it fails (e.g. permission denied due to no keys), we show success for the demo
-      // In a real scenario, setStatus('error');
-      setStatus('success'); 
+      console.error("Error adding document: ", error);
+      alert(`Error: ${error.message}. \n\nPlease check your internet connection or contact support.`);
+      setStatus('idle'); 
     }
   };
 

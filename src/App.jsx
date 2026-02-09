@@ -11,6 +11,8 @@ import HomePage from './pages/HomePage';
 import ProductsPage from './pages/ProductsPage';
 import AboutPage from './pages/AboutPage';
 import ContactPage from './pages/ContactPage';
+import AdminDashboard from './pages/AdminDashboard';
+import AdminLogin from './components/AdminLogin';
 
 function App() {
   const [selectedProduct, setSelectedProduct] = useState(null);
@@ -38,6 +40,10 @@ function App() {
             <Route path="/products" element={<ProductsPage onEnquiry={handleEnquiry} />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/contact" element={<ContactPage />} />
+            
+            {/* Admin Routes */}
+            <Route path="/admin/login" element={<AdminLogin />} />
+            <Route path="/admin/dashboard" element={<AdminDashboard />} />
           </Routes>
         </main>
 
