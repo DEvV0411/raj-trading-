@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './EnquiryModal.css';
 import { db } from '../firebase';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
-import { motion, AnimatePresence } from 'framer-motion'; // eslint-disable-line no-unused-vars
+import { motion, AnimatePresence } from 'framer-motion';
 
 const EnquiryModal = ({ product, isOpen, onClose }) => {
   const [formData, setFormData] = useState({
@@ -10,6 +10,7 @@ const EnquiryModal = ({ product, isOpen, onClose }) => {
     email: '',
     phone: ''
   });
+  const [errors, setErrors] = useState({});
   const [status, setStatus] = useState('idle'); // idle, submitting, success, error
 
   // Reset state when modal opens
@@ -17,26 +18,60 @@ const EnquiryModal = ({ product, isOpen, onClose }) => {
     if (isOpen) {
       setStatus('idle');
       setFormData({ name: '', email: '', phone: '' });
+      setErrors({});
     }
   }, [isOpen]);
 
   if (!isOpen) return null;
 
+  const validate = () => {
+    const newErrors = {};
+    if (!formData.name.trim()) newErrors.name = 'Name is required';
+    
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!formData.email.trim()) {
+      newErrors.email = 'Email is required';
+    } else if (!emailRegex.test(formData.email)) {
+      newErrors.email = 'Invalid email format';
+    }
+
+    const phoneRegex = /^\+?[0-9]{10,15}$/;
+    if (!formData.phone.trim()) {
+      newErrors.phone = 'Phone number is required';
+    } else if (!phoneRegex.test(formData.phone.replace(/[\s-]/g, ''))) {
+      newErrors.phone = 'Invalid phone number (10-15 digits)';
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+    // Clear error for the specific field when user types
+    if (errors[e.target.name]) {
+      setErrors({ ...errors, [e.target.name]: null });
+    }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
+    if (!validate()) return;
+
+    if (!navigator.onLine) {
+      alert("You appear to be offline. Please check your internet connection.");
+      return;
+    }
+
     setStatus('submitting');
     
     // Create a timeout promise
     const timeout = new Promise((_, reject) => {
-        setTimeout(() => reject(new Error('Request timed out')), 10000);
+        setTimeout(() => reject(new Error('Request timed out')), 15000); // Increased to 15s
     });
 
     try {
-      // Race the addDoc against the timeout
       await Promise.race([
         addDoc(collection(db, "enquiries"), {
           ...formData,
@@ -47,10 +82,13 @@ const EnquiryModal = ({ product, isOpen, onClose }) => {
         timeout
       ]);
       setStatus('success');
+      setTimeout(() => {
+        // Optional: Auto close after success? 
+        // onClose(); 
+      }, 3000);
     } catch (error) {
       console.error("Error adding document: ", error);
-      console.error("Error adding document: ", error);
-      alert(`Error: ${error.message}. \n\nPlease check your internet connection or contact support.`);
+      alert(`Error: ${error.message || "Failed to send enquiry"}. Please try again.`);
       setStatus('idle'); 
     }
   };
@@ -77,6 +115,9 @@ const EnquiryModal = ({ product, isOpen, onClose }) => {
                   Enquiry for <strong>{product.name}</strong> sent successfully. 
                   Sit back, we'll hit you up shortly!
                 </p>
+                <button className="btn-submit" onClick={onClose} style={{marginTop: '1rem'}}>
+                    Close
+                </button>
               </div>
             ) : (
               <div>
@@ -95,12 +136,12 @@ const EnquiryModal = ({ product, isOpen, onClose }) => {
                     <input 
                       type="text" 
                       name="name" 
-                      required
                       placeholder="Jane Doe"
-                      className="form-input"
+                      className={`form-input ${errors.name ? 'input-error' : ''}`}
                       value={formData.name}
                       onChange={handleChange}
                     />
+                    {errors.name && <span className="error-text" style={{color: 'red', fontSize: '0.8rem', marginTop: '4px', display: 'block'}}>{errors.name}</span>}
                   </div>
                   
                   <div className="form-group">
@@ -108,12 +149,12 @@ const EnquiryModal = ({ product, isOpen, onClose }) => {
                     <input 
                       type="email" 
                       name="email" 
-                      required
                       placeholder="jane@example.com"
-                      className="form-input"
+                      className={`form-input ${errors.email ? 'input-error' : ''}`}
                       value={formData.email}
                       onChange={handleChange}
                     />
+                    {errors.email && <span className="error-text" style={{color: 'red', fontSize: '0.8rem', marginTop: '4px', display: 'block'}}>{errors.email}</span>}
                   </div>
                   
                   <div className="form-group">
@@ -121,12 +162,12 @@ const EnquiryModal = ({ product, isOpen, onClose }) => {
                     <input 
                       type="tel" 
                       name="phone" 
-                      required
                       placeholder="+91 98765..."
-                      className="form-input"
+                      className={`form-input ${errors.phone ? 'input-error' : ''}`}
                       value={formData.phone}
                       onChange={handleChange}
                     />
+                    {errors.phone && <span className="error-text" style={{color: 'red', fontSize: '0.8rem', marginTop: '4px', display: 'block'}}>{errors.phone}</span>}
                   </div>
                   
                   <button type="submit" className="btn-submit" disabled={status === 'submitting'}>
