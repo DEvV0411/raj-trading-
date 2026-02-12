@@ -30,33 +30,38 @@ function App() {
 
   return (
     <Router>
-      <div className="app" style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', position: 'relative' }}>
-        <ScrollToTop />
-        <Navbar />
+      <ScrollToTop />
+      <Routes>
+        {/* Admin Routes - NO navbar/footer */}
+        <Route path="/admin" element={<Navigate to="/admin/login" replace />} />
+        <Route path="/admin/login" element={<AdminLogin />} />
+        <Route path="/admin/dashboard" element={<AdminDashboard />} />
         
-        <main style={{ flex: 1 }}>
-          <Routes>
-            <Route path="/" element={<HomePage onEnquiry={handleEnquiry} />} />
-            <Route path="/products" element={<ProductsPage onEnquiry={handleEnquiry} />} />
-            <Route path="/about" element={<AboutPage />} />
-            <Route path="/contact" element={<ContactPage />} />
+        {/* Main Website Routes - WITH navbar/footer */}
+        <Route path="/*" element={
+          <div className="app" style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', position: 'relative' }}>
+            <Navbar />
             
-            {/* Admin Routes */}
-            <Route path="/admin" element={<Navigate to="/admin/login" replace />} />
-            <Route path="/admin/login" element={<AdminLogin />} />
-            <Route path="/admin/dashboard" element={<AdminDashboard />} />
-          </Routes>
-        </main>
+            <main style={{ flex: 1 }}>
+              <Routes>
+                <Route path="/" element={<HomePage onEnquiry={handleEnquiry} />} />
+                <Route path="/products" element={<ProductsPage onEnquiry={handleEnquiry} />} />
+                <Route path="/about" element={<AboutPage />} />
+                <Route path="/contact" element={<ContactPage />} />
+              </Routes>
+            </main>
 
-        <Footer />
-        <FloatingContact />
-        
-        <EnquiryModal 
-          product={selectedProduct} 
-          isOpen={isModalOpen} 
-          onClose={handleCloseModal} 
-        />
-      </div>
+            <Footer />
+            <FloatingContact />
+            
+            <EnquiryModal 
+              product={selectedProduct} 
+              isOpen={isModalOpen} 
+              onClose={handleCloseModal} 
+            />
+          </div>
+        } />
+      </Routes>
     </Router>
   );
 }
