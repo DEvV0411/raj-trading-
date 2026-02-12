@@ -65,14 +65,15 @@ const EnquiryModal = ({ product, isOpen, onClose }) => {
     }
 
     setStatus('submitting');
+    console.log('Starting enquiry submission...', formData);
     
     // Create a timeout promise
     const timeout = new Promise((_, reject) => {
-        setTimeout(() => reject(new Error('Request timed out')), 15000); // Increased to 15s
+        setTimeout(() => reject(new Error('Request timed out after 15 seconds')), 15000);
     });
 
     try {
-      await Promise.race([
+      const docRef = await Promise.race([
         addDoc(collection(db, "enquiries"), {
           ...formData,
           productName: product.name,
@@ -81,15 +82,31 @@ const EnquiryModal = ({ product, isOpen, onClose }) => {
         }),
         timeout
       ]);
+      
+      console.log('Enquiry submitted successfully!', docRef?.id);
       setStatus('success');
-      setTimeout(() => {
-        // Optional: Auto close after success? 
-        // onClose(); 
-      }, 3000);
+      
+      // Reset form data
+      setFormData({ name: '', email: '', phone: '' });
+      
     } catch (error) {
-      console.error("Error adding document: ", error);
-      alert(`Error: ${error.message || "Failed to send enquiry"}. Please try again.`);
-      setStatus('idle'); 
+      console.error("Error submitting enquiry:", error);
+      
+      // Determine error message
+      let errorMessage = "Failed to send enquiry. Please try again.";
+      
+      if (error.message?.includes('timed out')) {
+        errorMessage = "Request timed out. Please check your internet connection and try again.";
+      } else if (error.code === 'permission-denied') {
+        errorMessage = "Permission denied. Please contact support.";
+      } else if (error.code === 'unavailable') {
+        errorMessage = "Firebase service is currently unavailable. Please try again later.";
+      } else if (error.message) {
+        errorMessage = error.message;
+      }
+      
+      alert(`Error: ${errorMessage}`);
+      setStatus('idle');
     }
   };
 
