@@ -3,63 +3,61 @@ import PageTransition from '../components/PageTransition';
 import './ContactPage.css';
 
 const ContactPage = () => {
+  const contactDetails = {
+    address: "Shop No. 2, Crystal Plaza, Basement, Anand Road, Opp. Railway Station, Malad (West), Mumbai - 400064.",
+    phones: ["9987463622"],
+    email: "rajtrading@example.com" // Placeholder until user provides real one, or I'll just remove email group
+  };
+
+  const handleMapsClick = () => {
+    const encodedAddress = encodeURIComponent(contactDetails.address);
+    window.open(`https://www.google.com/maps/search/?api=1&query=${encodedAddress}`, '_blank');
+  };
+
   return (
     <PageTransition>
       <div className="container contact-page">
-        <h1 className="contact-title">Get in Touch</h1>
+        <h1 className="contact-title">Visit Our <span className="text-gradient">Store</span></h1>
         <p className="contact-subtitle">
-          We'd love to hear from you. Visit our store or drop us a message.
+          We're located right in the heart of Malad. Come check out our latest collection in person.
         </p>
 
-        <div className="contact-grid">
-          
-          {/* Contact Info */}
-          <div>
-            <h2 className="contact-section-title">Contact Information</h2>
-            
-            <div className="contact-info-group">
-              <h3 className="contact-info-label">Address</h3>
-              <p className="contact-info-text">
-                Raj Trading Co.<br/>
-                123 Zaveri Bazaar,<br/>
-                Kalbadevi, Mumbai 400002,<br/>
-                Maharashtra, India
+        <div className="contact-content-card glass-panel">
+          <div className="contact-info-section">
+            <div className="info-block">
+              <h2 className="info-title">📍 Address</h2>
+              <p className="info-detail">{contactDetails.address}</p>
+              <button className="btn-directions" onClick={handleMapsClick}>
+                Get Directions on Maps ➔
+              </button>
+            </div>
+
+            <div className="info-block">
+              <h2 className="info-title">📞 Call Us</h2>
+              {contactDetails.phones.map((phone, i) => (
+                <p key={i} className="info-detail">
+                  <a href={`tel:${phone}`}>+91 {phone}</a>
+                </p>
+              ))}
+            </div>
+
+            <div className="info-block">
+              <h2 className="info-title">💬 Message</h2>
+              <p className="info-detail">
+                <a href={`https://wa.me/91${contactDetails.phones[0]}`} target="_blank" rel="noreferrer">
+                  Chat with us on WhatsApp
+                </a>
               </p>
             </div>
-
-            <div className="contact-info-group">
-              <h3 className="contact-info-label">Phone</h3>
-              <p className="contact-info-text">+91 98765 43210</p>
-              <p className="contact-info-text">022 2345 6789</p>
-            </div>
-
-            <div className="contact-info-group">
-              <h3 className="contact-info-label">Email</h3>
-              <p className="contact-info-text">sales@rajtrading.com</p>
-              <p className="contact-info-text">support@rajtrading.com</p>
-            </div>
           </div>
-
-          {/* General Form */}
-          <div className="contact-form-card">
-            <h2 className="contact-section-title">Send us a Message</h2>
-            <form onSubmit={(e) => { e.preventDefault(); alert("Message sent! We will contact you soon."); }}>
-              <div className="form-group">
-                <label className="form-label">Name</label>
-                <input type="text" required className="form-input" />
-              </div>
-              <div className="form-group">
-                <label className="form-label">Email</label>
-                <input type="email" required className="form-input" />
-              </div>
-              <div className="form-group" style={{ marginBottom: '1.5rem' }}>
-                <label className="form-label">Message</label>
-                <textarea rows="4" required className="form-textarea"></textarea>
-              </div>
-              <button type="submit" className="btn-send">
-                Send Message
-              </button>
-            </form>
+          
+          <div className="contact-visual-section">
+             {/* This could be a static map image or just a nice graphic */}
+             <div className="map-placeholder">
+                <span style={{fontSize: '4rem'}}>🏢</span>
+                <p style={{marginTop: '1rem', fontWeight: 600}}>Raj Trading Co.</p>
+                <p style={{fontSize: '0.8rem', opacity: 0.7}}>Crystal Plaza, Malad (W)</p>
+             </div>
           </div>
         </div>
       </div>

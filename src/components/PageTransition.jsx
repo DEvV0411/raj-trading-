@@ -4,10 +4,10 @@ import { motion } from 'framer-motion'; // eslint-disable-line no-unused-vars
 const PageTransition = ({ children }) => {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 15 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -15 }}
-      transition={{ duration: 0.6, ease: "easeInOut" }} // Standard ease
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.4, ease: "easeOut" }}
     >
       {children}
     </motion.div>

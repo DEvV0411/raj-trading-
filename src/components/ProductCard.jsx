@@ -1,6 +1,6 @@
 import React from 'react';
 import './ProductCard.css';
-import { motion } from 'framer-motion';
+import { motion } from 'framer-motion'; // eslint-disable-line no-unused-vars
 
 const ProductCard = ({ product, onEnquiry }) => {
   return (
@@ -11,7 +11,7 @@ const ProductCard = ({ product, onEnquiry }) => {
     >
       <div className="product-image-wrapper">
         <img 
-          src={product.image} 
+          src={product.src} 
           alt={product.name} 
           className="product-image" 
           loading="lazy"
@@ -27,7 +27,7 @@ const ProductCard = ({ product, onEnquiry }) => {
       </div>
       <div className="product-info">
         <div className="product-category">{product.category}</div>
-        <h3 className="product-name">{product.name}</h3>
+        {/* <h3 className="product-name">{product.name}</h3> */}
         <button 
           className="btn-enquiry"
           onClick={() => onEnquiry(product)}

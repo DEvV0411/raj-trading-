@@ -1,32 +1,110 @@
 .products-page {
   padding: 9rem 1rem 4rem;
-  max-width: 1200px; /* Slightly wider for grid */
+  max-width: 1400px;
   margin: 0 auto;
 }
 
 .products-header {
-  margin-bottom: 3rem;
+  margin-bottom: 4rem;
   text-align: center;
 }
 
 .products-title {
-  font-size: 2.5rem;
-  font-weight: 300;
+  font-size: 3.5rem;
+  font-weight: 800;
   margin-bottom: 1rem;
+  letter-spacing: -0.03em;
 }
 
 .products-subtitle {
   color: var(--text-secondary);
+  font-size: 1.2rem;
   max-width: 600px;
   margin: 0 auto;
 }
 
+/* Base Category Bar - In Flow */
+.sticky-filters-container {
+  padding: 1rem 0;
+  margin-bottom: 2rem;
+  transition: all 0.3s ease;
+  z-index: 500;
+}
+
+/* Forced Fixed Navigation - THE NUCLEAR FIX */
+.sticky-filters-container.is-fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding-top: 6rem; /* Sits below the navbar height */
+  padding-bottom: 1rem;
+  background: rgba(253, 251, 247, 0.98);
+  backdrop-filter: blur(12px);
+  z-index: 500;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+}
+
+.category-filters {
+  display: flex;
+  justify-content: center;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+  pointer-events: auto;
+}
+
+.filter-btn {
+  background: white;
+  border: 1px solid rgba(0,0,0,0.1);
+  padding: 0.6rem 1.2rem;
+  border-radius: 30px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.filter-btn:hover {
+  transform: translateY(-2px);
+  color: var(--text-primary);
+  border-color: var(--accent-purple);
+}
+
+.filter-btn.active {
+  background: var(--text-primary);
+  color: white;
+  border-color: var(--text-primary);
+  padding: 0.6rem 1.8rem;
+}
+
+.count-badge {
+  background: rgba(0,0,0,0.05);
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: 0.75rem;
+}
+
+.filter-btn.active .count-badge {
+  background: rgba(255,255,255,0.2);
+  color: white;
+}
+
 @media (max-width: 768px) {
   .products-page {
-    padding: 10rem 1rem 4rem; /* Top padding for fixed navbar */
+    padding: 8rem 1rem 4rem;
   }
 
   .products-title {
-    font-size: 2rem;
+    font-size: 2.5rem;
+  }
+  
+  .sticky-filters-container.is-fixed {
+    padding-top: 5rem;
   }
 }

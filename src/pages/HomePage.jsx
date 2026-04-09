@@ -1,15 +1,15 @@
 import React from 'react';
 import Hero from '../components/Hero';
 import ProductGrid from '../components/ProductGrid';
-import { products } from '../data/products';
+import galleryData from '../data/galleryData.json';
 import { Link } from 'react-router-dom';
 import PageTransition from '../components/PageTransition';
 import './HomePage.css';
 import { motion } from 'framer-motion'; // eslint-disable-line no-unused-vars
 
 const HomePage = ({ onEnquiry }) => {
-  // Show only first 6 products on Home
-  const featuredProducts = products.slice(0, 6);
+  // Show only the latest 6 products added to folders
+  const featuredProducts = galleryData.images.slice(-6).reverse();
 
   const sectionVariants = {
     hidden: { opacity: 0, y: 50 },

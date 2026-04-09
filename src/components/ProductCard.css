@@ -1,16 +1,16 @@
 .product-card {
   background-color: white;
-  border-radius: var(--radius-lg); /* Rounded like a squircle */
+  border-radius: var(--radius-lg); 
   overflow: hidden;
   box-shadow: 0 10px 30px rgba(0,0,0,0.03);
-  transition: box-shadow 0.3s ease;
+  transition: all 0.3s ease;
   border: 1px solid rgba(0,0,0,0.03);
   position: relative;
 }
 
 .product-card:hover {
   box-shadow: var(--shadow-md);
-  border-color: rgba(108, 92, 231, 0.2);
+  border-color: var(--accent-purple);
 }
 
 .product-image-wrapper {
@@ -35,13 +35,14 @@
 .card-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,0.2);
+  background: rgba(0,0,0,0.3);
   display: flex;
   justify-content: center;
   align-items: center;
   opacity: 0;
   transition: opacity 0.3s ease;
   backdrop-filter: blur(2px);
+  z-index: 5;
 }
 
 .product-card:hover .card-overlay {
@@ -53,11 +54,13 @@
   color: var(--text-primary);
   padding: 0.8rem 1.5rem;
   border-radius: var(--radius-pill);
-  font-weight: 600;
+  font-weight: 700;
   font-size: 0.9rem;
   transform: translateY(20px);
-  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  cursor: pointer;
+  pointer-events: auto; /* Force catch clicks */
 }
 
 .product-card:hover .btn-quick-view {
@@ -67,6 +70,8 @@
 .product-info {
   padding: 1.5rem;
   text-align: center;
+  position: relative;
+  z-index: 10;
 }
 
 .product-category {
@@ -76,35 +81,29 @@
   color: var(--text-secondary);
   margin-bottom: 0.5rem;
   font-weight: 600;
-  opacity: 0.7;
-}
-
-.product-name {
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: var(--text-primary);
-  margin-bottom: 1rem;
 }
 
 .btn-enquiry {
   display: inline-block;
   font-size: 0.95rem;
-  color: white; /* Default white for contrast */
-  background: var(--text-primary); /* Bold black */
+  color: white; 
+  background: var(--text-primary); 
   border: none;
   padding: 0.8rem 2rem;
   border-radius: var(--radius-pill);
   transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  position: relative;
-  overflow: hidden;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  cursor: pointer !important;
   width: 100%;
+  margin-top: 1rem;
+  position: relative;
+  z-index: 1000 !important; /* Above everything else */
+  pointer-events: auto !important; /* Force clicks */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
 .product-card:hover .btn-enquiry {
-  background: var(--accent-purple); /* Electric purple on hover */
+  background: var(--accent-purple); 
   box-shadow: 0 8px 20px rgba(108, 92, 231, 0.3);
-  transform: scale(1.02);
 }
 
 .btn-enquiry:active {

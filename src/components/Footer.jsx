@@ -20,12 +20,6 @@ const Footer = () => {
               <Link to="/about">Our Story</Link>
             </div>
             
-            <div className="link-group">
-              <h3>Socials</h3>
-              <a href="#" className="social-link">Instagram 📸</a>
-              <a href="#" className="social-link">TikTok 🎵</a>
-              <a href="#" className="social-link">Pinterest 📌</a>
-            </div>
           </div>
         </div>
         

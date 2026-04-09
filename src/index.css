@@ -53,7 +53,7 @@ body {
   color: var(--text-primary);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
+  /* overflow-x: hidden; */ /* Removing to ensure Sticky works reliably */
   background-image: 
     radial-gradient(circle at 10% 20%, rgba(253, 121, 168, 0.03) 0%, transparent 20%),
     radial-gradient(circle at 90% 80%, rgba(108, 92, 231, 0.03) 0%, transparent 20%);

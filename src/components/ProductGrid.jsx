@@ -1,7 +1,7 @@
 import React from 'react';
 import ProductCard from './ProductCard';
 import './ProductGrid.css';
-import { motion } from 'framer-motion';
+import { motion } from 'framer-motion'; // eslint-disable-line no-unused-vars
 
 const container = {
   hidden: { opacity: 0 },
@@ -26,7 +26,7 @@ const ProductGrid = ({ products, onEnquiry }) => {
         variants={container}
         initial="hidden"
         whileInView="show"
-        viewport={{ once: true, margin: "-100px" }}
+        viewport={{ once: true }}
       >
         {products.map(product => (
           <motion.div key={product.id} variants={item}>

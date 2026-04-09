@@ -1,10 +1,10 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion } from 'framer-motion'; // eslint-disable-line no-unused-vars
 
 const FloatingContact = () => {
   return (
     <motion.a
-      href="https://wa.me/919876543210" // Replace with real number
+      href="https://wa.me/919987463622" 
       target="_blank"
       rel="noopener noreferrer"
       initial={{ scale: 0 }}

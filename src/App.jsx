@@ -1,23 +1,22 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import EnquiryModal from './components/EnquiryModal';
 import ScrollToTop from './components/ScrollToTop'; 
-import FloatingContact from './components/FloatingContact'; // New
+import FloatingContact from './components/FloatingContact';
 
 // Pages
 import HomePage from './pages/HomePage';
 import ProductsPage from './pages/ProductsPage';
 import AboutPage from './pages/AboutPage';
 import ContactPage from './pages/ContactPage';
-import AdminDashboard from './pages/AdminDashboard';
-import AdminLogin from './components/AdminLogin';
 
 function App() {
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  // Core Enquiry Handler
   const handleEnquiry = (product) => {
     setSelectedProduct(product);
     setIsModalOpen(true);
@@ -31,37 +30,27 @@ function App() {
   return (
     <Router>
       <ScrollToTop />
-      <Routes>
-        {/* Admin Routes - NO navbar/footer */}
-        <Route path="/admin" element={<Navigate to="/admin/login" replace />} />
-        <Route path="/admin/login" element={<AdminLogin />} />
-        <Route path="/admin/dashboard" element={<AdminDashboard />} />
+      <div className="app" style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', position: 'relative' }}>
+        <Navbar />
         
-        {/* Main Website Routes - WITH navbar/footer */}
-        <Route path="/*" element={
-          <div className="app" style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', position: 'relative' }}>
-            <Navbar />
-            
-            <main style={{ flex: 1 }}>
-              <Routes>
-                <Route path="/" element={<HomePage onEnquiry={handleEnquiry} />} />
-                <Route path="/products" element={<ProductsPage onEnquiry={handleEnquiry} />} />
-                <Route path="/about" element={<AboutPage />} />
-                <Route path="/contact" element={<ContactPage />} />
-              </Routes>
-            </main>
+        <main style={{ flex: 1 }}>
+          <Routes>
+            <Route path="/" element={<HomePage onEnquiry={handleEnquiry} />} />
+            <Route path="/products" element={<ProductsPage onEnquiry={handleEnquiry} />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/contact" element={<ContactPage />} />
+          </Routes>
+        </main>
 
-            <Footer />
-            <FloatingContact />
-            
-            <EnquiryModal 
-              product={selectedProduct} 
-              isOpen={isModalOpen} 
-              onClose={handleCloseModal} 
-            />
-          </div>
-        } />
-      </Routes>
+        <Footer />
+        <FloatingContact />
+        
+        <EnquiryModal 
+          product={selectedProduct} 
+          isOpen={isModalOpen} 
+          onClose={handleCloseModal} 
+        />
+      </div>
     </Router>
   );
 }
