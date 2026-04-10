@@ -1,44 +1,43 @@
 @import url("https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;800&display=swap");
 
 :root {
-  /* Gen-Z Palette */
+  /* Premium Palette */
   --bg-primary: #FDFBF7; /* Creamy off-white */
-  --bg-secondary: #F0F4F8; /* Cool soft blue/grey */
-  --bg-glass: rgba(255, 255, 255, 0.7);
+  --bg-secondary: #F4F7FA; /* Sophisticated grey-blue */
+  --bg-glass: rgba(255, 255, 255, 0.75);
   
-  --text-primary: #1A1A1A; /* Stark black */
-  --text-secondary: #5A5A5A;
-  --text-accent: #6C5CE7; /* Electric Purple */
+  --text-primary: #121212; /* Rich black */
+  --text-secondary: #4A4A4A;
+  --text-accent: #5D4AD8; /* Refined Indigo */
 
-  /* Vibey Accents */
-  --accent-purple: #6C5CE7;
-  --accent-pink: #FD79A8;
-  --accent-green: #00B894;
-  --accent-yellow: #FDCB6E;
+  /* Institutional Accents */
+  --accent-purple: #5D4AD8;
+  --accent-gold: #D4AF37;
+  --accent-neutral: #E0E4E8;
   
   /* Gradients */
-  --gradient-main: linear-gradient(135deg, #6C5CE7 0%, #FD79A8 100%);
-  --gradient-soft: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(108, 92, 231, 0.05) 100%);
+  --gradient-main: linear-gradient(135deg, #5D4AD8 0%, #E056FD 100%);
+  --gradient-gold: linear-gradient(135deg, #FFD700 0%, #D4AF37 100%);
+  --gradient-soft: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(93, 74, 216, 0.03) 100%);
 
-  /* Spacing */
+  /* Layout */
   --spacing-xs: 0.5rem;
   --spacing-sm: 1rem;
   --spacing-md: 2rem;
   --spacing-lg: 4rem;
   --spacing-xl: 8rem;
 
-  /* Layout */
-  --max-width: 1400px; /* Wider for that expansive feel */
+  --max-width: 1400px;
   --radius-sm: 12px;
   --radius-md: 24px;
   --radius-lg: 40px;
   --radius-pill: 9999px;
 
-  /* Shadows */
-  --shadow-sm: 0 4px 20px rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 12px 40px rgba(108, 92, 231, 0.15); /* Colored shadow */
-  --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.1);
-  --shadow-neon: 0 0 20px rgba(108, 92, 231, 0.4);
+  /* Premium Shadows */
+  --shadow-sm: 0 4px 20px rgba(0, 0, 0, 0.03);
+  --shadow-md: 0 12px 40px rgba(93, 74, 216, 0.12);
+  --shadow-lg: 0 30px 60px rgba(0, 0, 0, 0.08);
+  --shadow-inner: inset 0 2px 4px rgba(0,0,0,0.02);
 }
 
 * {
@@ -114,6 +113,16 @@ textarea:focus {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+
+@media (max-width: 768px) {
+  :root {
+    --spacing-md: 1.25rem;
+    --spacing-lg: 2.5rem;
+    --spacing-xl: 4rem;
+    --radius-md: 16px;
+    --radius-lg: 28px;
+  }
 }
 
 /* Scrollbar */

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion'; // eslint-disable-line no-unused-vars
+import logo from '../assets/logo.jpg';
 import './Navbar.css';
 
 const Navbar = () => {
@@ -35,7 +36,10 @@ const Navbar = () => {
     >
       <div className="container nav-container">
         <Link to="/" className="nav-brand" onClick={closeMenu}>
-          Raj Trading <span className="brand-dot">.</span>
+          <div className="logo-container">
+            <img src={logo} alt="Raj Trading" className="logo-img" />
+          </div>
+          <span className="brand-text">Raj Trading<span className="brand-dot">.</span></span>
         </Link>
         
         <div className={`nav-toggle ${isOpen ? 'open' : ''}`} onClick={toggleMenu}>

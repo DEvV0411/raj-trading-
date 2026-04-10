@@ -33,16 +33,17 @@ const Hero = () => {
         variants={stagger}
       >
         <motion.span className="hero-tag" variants={fadeInUp}>
-          ✨ Est. 2024
+          Premium Showcase Solutions
         </motion.span>
         
         <motion.h1 className="hero-title" variants={fadeInUp}>
-          Elevate Your <br />
-          <span className="text-gradient">Aesthetic.</span>
+          The Definitive Stage for <br />
+          <span className="text-gradient">Fine Jewellery.</span>
         </motion.h1>
         
         <motion.p className="hero-subtitle" variants={fadeInUp}>
-          Curated jewellery props and display accessories designed to make your collection pop.
+          Raj Trading Company provides bespoke display accessories and premium showroom props 
+          engineered to elevate your collection's perceived value.
         </motion.p>
         
         <motion.div variants={fadeInUp}>

@@ -17,6 +17,18 @@
   border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
+.login-logo-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.login-logo {
+  height: 80px;
+  width: auto;
+  object-fit: contain;
+}
+
 .login-title {
   text-align: center;
   font-size: 1.8rem;

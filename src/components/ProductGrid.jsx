@@ -29,12 +29,12 @@ const ProductGrid = ({ products, onEnquiry }) => {
         viewport={{ once: true }}
       >
         {products.map(product => (
-          <motion.div key={product.id} variants={item}>
-            <ProductCard 
-              product={product} 
-              onEnquiry={onEnquiry} 
-            />
-          </motion.div>
+          <ProductCard 
+            key={product.id}
+            product={product} 
+            onEnquiry={onEnquiry} 
+            variants={item}
+          />
         ))}
       </motion.div>
     </section>

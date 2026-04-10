@@ -25,6 +25,25 @@ const HomePage = ({ onEnquiry }) => {
       <div className="home-page">
         <Hero />
         
+        {/* Market Presence / Stats Strip */}
+        <section className="impact-strip">
+          <div className="container">
+            <div className="impact-grid">
+              {[
+                { label: "Products Available", value: "74+" },
+                { label: "Premium Finishes", value: "12+" },
+                { label: "Quality Checks", value: "100%" },
+                { label: "Artisan Finished", value: "Yes" }
+              ].map((stat, i) => (
+                <div key={i} className="stat-card">
+                  <span className="stat-value">{stat.value}</span>
+                  <span className="stat-label">{stat.label}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         <motion.section 
           className="container home-container"
           initial="hidden"
@@ -32,85 +51,78 @@ const HomePage = ({ onEnquiry }) => {
           viewport={{ once: true, amount: 0.2 }}
           variants={sectionVariants}
         >
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
-            <h2 style={{ fontSize: '2.5rem', fontWeight: 800, color: 'var(--text-primary)', letterSpacing: '-0.02em' }}>
-              Fresh <span className="text-gradient">Drops</span>
+          <div className="section-header">
+            <h2 className="section-title">
+              Signature <span className="text-gradient">Collections</span>
             </h2>
-            <Link to="/products" style={{ color: 'var(--text-secondary)', fontWeight: 600, fontSize: '1.1rem' }}>
-              See All ➔
+            <Link to="/products" className="see-all-link">
+              Explore All ➔
             </Link>
           </div>
           <ProductGrid products={featuredProducts} onEnquiry={onEnquiry} />
         </motion.section>
 
-        {/* Feature Section with Hover & Animation */}
+        {/* Core Pillars / Genuineness Section */}
         <motion.section 
-          style={{ backgroundColor: 'var(--bg-secondary)', padding: '6rem 0', marginTop: '4rem', borderRadius: 'var(--radius-lg)' }} 
-          className="home-section"
+          className="home-section institutional-section"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
           variants={sectionVariants}
         >
           <div className="container" style={{ textAlign: 'center', maxWidth: '1000px' }}>
-            <h2 style={{ fontSize: '3rem', marginBottom: '1.5rem', fontWeight: 800 }}>Why We're The <span style={{ color: 'var(--accent-purple)' }}>GOAT</span></h2>
-            <p style={{ color: 'var(--text-secondary)', marginBottom: '4rem', maxWidth: '700px', margin: '0 auto 4rem', fontSize: '1.2rem' }}>
-              We don't just sell props. We sell the vibe that sells your jewellery.
+            <h2 className="section-title">Established <span style={{ color: 'var(--accent-purple)' }}>Excellence</span></h2>
+            <p className="section-subtitle">
+              We specialize in crafting the stage where your jewellery becomes the main character. 
+              Our displays are engineered for durability and designed for elegance.
             </p>
             
             <div className="feature-grid">
               {[
-                { icon: "✨", title: "Premium AF", desc: "Velvet finishes that feel as expensive as they look." },
-                { icon: "🎨", title: "Custom Drip", desc: "Colors that match your brand's aesthetic perfectly." },
-                { icon: "🚀", title: "Fast Shipping", desc: "We ship across India faster than you can say 'sold out'." }
+                { icon: "🏛️", title: "Direct Registry", desc: "Supplying directly from our manufacturing units to ensure unbeatable quality control." },
+                { icon: "💎", title: "Precision Finish", desc: "Each piece is hand-finished with high-grade velvet and premium acrylics." },
+                { icon: "🤝", title: "Trusted Partner", desc: "For over a decade, we've been the silent partner to some of India's biggest showrooms." }
               ].map((feature, index) => (
                 <motion.div 
                   key={index}
-                  className="feature-card"
-                  whileHover={{ y: -10, scale: 1.02 }} 
-                  style={{ 
-                    background: 'white', 
-                    padding: '2rem', 
-                    borderRadius: 'var(--radius-md)',
-                    boxShadow: 'var(--shadow-sm)'
-                  }}
+                  className="feature-card glass-panel"
+                  whileHover={{ y: -10 }}
                 >
-                  <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>{feature.icon}</div>
-                  <h3 style={{ marginBottom: '1rem', fontWeight: 700, fontSize: '1.5rem' }}>{feature.title}</h3>
-                  <p style={{ fontSize: '1rem', color: 'var(--text-secondary)' }}>{feature.desc}</p>
+                  <div className="feature-icon">{feature.icon}</div>
+                  <h3 className="feature-title">{feature.title}</h3>
+                  <p className="feature-desc">{feature.desc}</p>
                 </motion.div>
               ))}
             </div>
           </div>
         </motion.section>
 
-        {/* Testimonials Section (New) */}
+        {/* Professional Testimonials */}
         <motion.section 
           className="home-section"
-          style={{ padding: '6rem 0' }}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
           variants={sectionVariants}
         >
           <div className="container">
-            <h2 style={{ textAlign: 'center', fontSize: '2.5rem', fontWeight: 800, marginBottom: '4rem' }}>The Streets are Talking 🗣️</h2>
+            <h2 className="section-title" style={{ textAlign: 'center' }}>Voice of the <span className="text-gradient">Industry</span></h2>
             
             <div className="testimonial-grid">
               {[
-                { name: "Priya J.", role: "Boutique Owner", quote: "Literally obsessed. My bridal set looks insane on these displays." },
-                { name: "Amit Shah", role: "Zaveri Bazaar", quote: "Best quality in the market, no cap. Highly recommend." },
-                { name: "Kavita R.", role: "Designer", quote: "The emerald green trays are a total vibe. Love it." }
+                { name: "Rajesh Mehra", role: "Owner, Mehra Jewellers", quote: "Raj Trading has transformed our showroom floor. Their displays don't just hold jewellery; they enhance it." },
+                { name: "Sunil K.", role: "Manager, Zaveri Plaza", quote: "The durability of their stands is unmatched. We've been using their trays for years without a single complaint." },
+                { name: "Anjali Gupta", role: "Boutique Designer", quote: "The custom color options allowed us to match our brand's unique aesthetic perfectly. Truly professional." }
               ].map((t, i) => (
                  <motion.div 
                    key={i} 
                    className="testimonial-card glass-panel"
-                   whileHover={{ rotate: i % 2 === 0 ? 2 : -2, scale: 1.05 }}
-                   style={{ padding: '2rem', borderRadius: 'var(--radius-md)' }}
+                   whileHover={{ scale: 1.05 }}
                  >
-                   <p style={{ fontStyle: 'italic', fontSize: '1.2rem', color: 'var(--text-primary)', marginBottom: '1.5rem', fontWeight: 500 }}>"{t.quote}"</p>
-                   <h4 style={{ fontWeight: 800, color: 'var(--accent-purple)' }}>{t.name}</h4>
-                   <span style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', textTransform: 'uppercase', letterSpacing: '1px' }}>{t.role}</span>
+                   <div className="quote-icon">"</div>
+                   <p className="testimonial-quote">{t.quote}</p>
+                   <h4 className="testimonial-name">{t.name}</h4>
+                   <span className="testimonial-role">{t.role}</span>
                  </motion.div>
               ))}
             </div>

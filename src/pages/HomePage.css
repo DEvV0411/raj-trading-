@@ -1,52 +1,212 @@
+.home-page {
+  padding-bottom: 6rem;
+}
+
+/* Impact Strip */
+.impact-strip {
+  background: var(--bg-primary);
+  padding: 3rem 0;
+  border-bottom: 1px solid var(--accent-neutral);
+  margin-bottom: 4rem;
+}
+
+.impact-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  text-align: center;
+}
+
+.stat-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.stat-value {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--accent-purple);
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+/* Section Header Styles */
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 3rem;
+}
+
+.section-title {
+  font-size: 3rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.section-subtitle {
+  color: var(--text-secondary);
+  font-size: 1.2rem;
+  max-width: 700px;
+  margin: 0 auto 4rem;
+}
+
+.see-all-link {
+  color: var(--text-secondary);
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
 .home-section {
   padding: 6rem 0;
 }
 
-.home-container {
-  margin-bottom: 6rem;
+.institutional-section {
+  background-color: var(--bg-secondary);
+  margin: 4rem 0;
+  border-radius: var(--radius-lg);
 }
 
 .feature-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 3rem;
-}
-
-.testimonial-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem;
+  margin-top: 2rem;
 }
 
 .feature-card {
-  padding: 2rem;
-  border-radius: var(--radius-md);
-  background-color: #fff;
-  box-shadow: var(--shadow-sm);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  padding: 3rem 2rem;
+  text-align: center;
+}
+
+.feature-icon {
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+}
+
+.feature-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.feature-desc {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* Testimonials */
+.testimonial-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
 }
 
 .testimonial-card {
-  text-align: center;
-  padding: 2rem;
-  border: 1px solid var(--border-light);
+  padding: 3rem 2rem;
   border-radius: var(--radius-md);
+  position: relative;
+  overflow: visible;
+}
+
+.quote-icon {
+  position: absolute;
+  top: -20px;
+  left: 20px;
+  font-size: 5rem;
+  font-family: serif;
+  color: var(--accent-purple);
+  opacity: 0.1;
+  line-height: 1;
+}
+
+.testimonial-quote {
+  font-size: 1.1rem;
+  font-style: italic;
+  margin-bottom: 2rem;
+  line-height: 1.8;
+  position: relative;
+  z-index: 1;
+}
+
+.testimonial-name {
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 0.2rem;
+}
+
+.testimonial-role {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--accent-purple);
+  font-weight: 600;
+}
+
+@media (max-width: 992px) {
+  .impact-grid, .feature-grid, .testimonial-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media (max-width: 768px) {
-  .home-section {
-    padding: 3rem 0; /* Reducing padding for mobile */
+  .section-header {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    text-align: center;
+    margin-bottom: 2rem;
   }
 
-  .home-container {
+  .section-title {
+    font-size: 2.2rem;
+  }
+
+  .section-subtitle {
+    font-size: 1rem;
     margin-bottom: 3rem;
+    padding: 0 1rem;
   }
   
-  .feature-grid {
-    gap: 2rem;
+  .home-section {
+    padding: 3rem 0;
   }
 
-  .feature-card {
-    padding: 1.5rem;
+  .institutional-section {
+    padding: 4rem 1rem;
+    margin: 2rem 0;
+  }
+
+  .impact-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2x2 for stats looks better than 4x1 */
+    gap: 1.5rem;
+  }
+  
+  .feature-grid, .testimonial-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .stat-value {
+    font-size: 1.8rem;
+  }
+
+  .feature-card, .testimonial-card {
+    padding: 2rem 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-title {
+    font-size: 1.8rem;
   }
 }

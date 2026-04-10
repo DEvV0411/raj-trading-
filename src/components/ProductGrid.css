@@ -4,13 +4,23 @@
 
 .product-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 3rem;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 320px));
+  justify-content: center;
+  gap: 1.5rem;
+  align-items: stretch; /* Ensures all cards in a row have identical height */
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .product-grid {
-    grid-template-columns: 1fr;
-    gap: 2rem;
+    grid-template-columns: repeat(2, 1fr); /* 2 smaller photos in 1 line as requested */
+    gap: 1rem;
+    padding: 0 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .product-grid {
+    gap: 0.75rem;
+    padding: 0;
   }
 }

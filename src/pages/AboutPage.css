@@ -1,87 +1,213 @@
 .about-page {
-  padding: 8rem 1rem 6rem;
-  max-width: 1000px;
-  margin: 0 auto;
+  padding-top: 9rem;
+  padding-bottom: 6rem;
 }
 
 .about-header {
   text-align: center;
-  margin-bottom: 6rem;
+  margin-bottom: 5rem;
 }
 
 .about-title {
-  font-size: 4rem;
+  font-size: 3.5rem;
   font-weight: 800;
-  margin-bottom: 1rem;
-  letter-spacing: -0.03em;
+  margin-bottom: 1.5rem;
   line-height: 1.1;
+  letter-spacing: -0.04em;
 }
 
 .about-subtitle {
-  color: var(--text-secondary);
-  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: var(--accent-purple);
+  font-size: 0.9rem;
 }
 
-.about-grid {
-  display: grid;
-  gap: 4rem;
+.about-content-wrapper {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.about-main-section {
+  margin-bottom: 6rem;
+  text-align: center;
 }
 
 .about-section-title {
-  font-size: 2rem;
+  font-size: 2.2rem;
   font-weight: 800;
-  margin-bottom: 1.5rem;
-  color: var(--text-primary);
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
 }
 
 .about-text {
-  color: var(--text-secondary);
+  font-size: 1.25rem;
   line-height: 1.8;
-  margin-bottom: 1.5rem;
-  font-size: 1.1rem;
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
 }
 
-.philosophy-list {
-  list-style: none;
+/* Stats Grid */
+.about-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  margin-bottom: 6rem;
+}
+
+.stat-box {
+  padding: 3rem;
+  text-align: center;
+}
+
+.stat-box h3 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.stat-box p {
+  color: var(--accent-purple);
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+}
+
+/* Manufacturing Process */
+.manufacturing-section {
+  margin-bottom: 6rem;
+}
+
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.process-card {
+  padding: 2.5rem 2rem;
+  background: white;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(0,0,0,0.03);
+  transition: all 0.3s ease;
+}
+
+.process-card:hover {
+  transform: translateY(-10px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--accent-purple);
+}
+
+.process-card h4 {
+  font-size: 1.3rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+}
+
+.process-card p {
+  color: var(--text-secondary);
+  line-height: 1.7;
+  font-size: 1rem;
+}
+
+/* Promise Section */
+.promise-section {
+  padding: 4rem;
+}
+
+.promise-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+.promise-item {
   display: flex;
-  flex-direction: column;
   gap: 1.5rem;
-}
-
-.philosophy-item {
-  display: flex;
-  gap: 1rem;
   align-items: flex-start;
 }
 
-.philosophy-number {
-  color: white;
+.promise-icon {
   background: var(--accent-purple);
-  width: 30px;
-  height: 30px;
-  min-width: 30px; /* Prevent shrinking */
+  color: white;
+  width: 32px;
+  height: 32px;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  font-weight: bold;
-  margin-top: 4px; /* Align with text */
+  flex-shrink: 0;
+  font-weight: 800;
+}
+
+.promise-text {
+  font-size: 1.15rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.promise-text strong {
+  color: var(--text-primary);
+  display: block;
+  margin-bottom: 0.2rem;
 }
 
 @media (max-width: 768px) {
   .about-page {
-    padding: 6rem 1rem 4rem; /* Reduced top padding */
-  }
-
-  .about-title {
-    font-size: 2.5rem;
+    padding-top: 7rem;
+    padding-bottom: 4rem;
   }
 
   .about-header {
     margin-bottom: 3rem;
   }
 
-  .about-grid {
-    gap: 3rem;
+  .about-title {
+    font-size: 2.5rem;
+  }
+
+  .about-section-title {
+    font-size: 1.8rem;
+  }
+
+  .about-text {
+    font-size: 1.1rem;
+    line-height: 1.6;
+  }
+  
+  .about-grid, .process-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .stat-box {
+    padding: 2rem 1.5rem;
+  }
+
+  .stat-box h3 {
+    font-size: 2.2rem;
+  }
+
+  .process-card {
+    padding: 2rem 1.5rem;
+  }
+  
+  .promise-section {
+    padding: 2rem 1.5rem;
+  }
+
+  .promise-item {
+    gap: 1rem;
+  }
+
+  .promise-text {
+    font-size: 1rem;
   }
 }

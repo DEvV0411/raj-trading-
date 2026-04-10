@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../firebase';
+import logo from '../assets/logo.jpg';
 import './AdminLogin.css';
 
 const AdminLogin = () => {
@@ -32,6 +33,9 @@ const AdminLogin = () => {
   return (
     <div className="admin-login-container">
       <div className="admin-login-card">
+        <div className="login-logo-container">
+          <img src={logo} alt="Raj Trading" className="login-logo" />
+        </div>
         <h2 className="login-title">Admin Portal</h2>
         
         {error && <div className="login-error">{error}</div>}
