@@ -73,8 +73,8 @@ const HomePage = ({ onEnquiry }) => {
           <div className="container" style={{ textAlign: 'center', maxWidth: '1000px' }}>
             <h2 className="section-title">Established <span style={{ color: 'var(--accent-purple)' }}>Excellence</span></h2>
             <p className="section-subtitle">
-              We specialize in crafting the stage where your jewellery becomes the main character. 
-              Our displays are engineered for durability and designed for elegance.
+              Raj Trading is India's leading manufacturer of premium **jewellery display stands**, wholesale storage trays, and luxury **showroom accessories**. 
+              Our bespoke props are engineered for durability and designed to elevate your brand's retail presence in Mumbai and across the globe.
             </p>
             
             <div className="feature-grid">

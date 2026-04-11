@@ -30,8 +30,8 @@ const AboutPage = () => {
           >
             <h2 className="about-section-title">The Raj Trading Journey 🏛️</h2>
             <p className="about-text">
-              Raj Trading was established with a singular vision: to revolutionize the jewellery display industry in India. 
-              We recognized a significant gap between the intricate beauty of traditional jewellery and the lacklustre quality of standard market displays.
+              Raj Trading Company was established with a singular vision: to revolutionize the **jewellery display industry in India**. 
+              We recognized a significant gap between the intricate beauty of traditional jewellery and the lacklustre quality of standard market retail props.
             </p>
             <p className="about-text">
               What began as a localized effort to improve showroom aesthetics in Mumbai has grown into a vertically integrated manufacturing powerhouse, 

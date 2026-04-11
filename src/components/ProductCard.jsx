@@ -21,7 +21,7 @@ const ProductCard = ({ product, onEnquiry, variants }) => {
       <div className="product-image-wrapper">
         <img 
           src={product.src} 
-          alt={product.name} 
+          alt={`${product.category} - Premium Jewellery Display by Raj Trading`} 
           className="product-image"
           loading="lazy"
           onError={handleImageError}
