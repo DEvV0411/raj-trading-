@@ -37,8 +37,8 @@ const Hero = () => {
         </motion.span>
         
         <motion.h1 className="hero-title" variants={fadeInUp}>
-          The Definitive Stage for <br />
-          <span className="text-gradient">Fine Jewellery.</span>
+          Premium <span className="text-gradient">Jewellery Accessories</span> <br />
+          & Display Solutions.
         </motion.h1>
         
         <motion.p className="hero-subtitle" variants={fadeInUp}>

@@ -30,7 +30,7 @@ const HomePage = ({ onEnquiry }) => {
           <div className="container">
             <div className="impact-grid">
               {[
-                { label: "Products Available", value: "74+" },
+                { label: "Products Available", value: "100+" },
                 { label: "Premium Finishes", value: "12+" },
                 { label: "Quality Checks", value: "100%" },
                 { label: "Artisan Finished", value: "Yes" }
@@ -93,6 +93,30 @@ const HomePage = ({ onEnquiry }) => {
                   <p className="feature-desc">{feature.desc}</p>
                 </motion.div>
               ))}
+            </div>
+          </div>
+        </motion.section>
+
+        {/* Visit Us / Local Presence */}
+        <motion.section 
+          className="home-section"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={sectionVariants}
+        >
+          <div className="container" style={{ textAlign: 'center' }}>
+            <div className="glass-panel" style={{ padding: '4rem 2rem', borderRadius: 'var(--radius-lg)' }}>
+              <h2 className="section-title">Visit Our <span className="text-gradient">Showroom</span></h2>
+              <p className="section-subtitle" style={{ fontSize: '1.5rem', fontWeight: '600', color: 'var(--text-primary)' }}>
+                Located right in the heart of Malad — <span style={{ color: 'var(--accent-purple)' }}>Heart of Mumbai</span>.
+              </p>
+              <p className="section-subtitle">
+                Experience the collection in person. Come check out our latest designs and feel the premium quality of our display solutions.
+              </p>
+              <div style={{ marginTop: '2rem' }}>
+                <a href="#contact" className="hero-btn">Get Directions ➔</a>
+              </div>
             </div>
           </div>
         </motion.section>

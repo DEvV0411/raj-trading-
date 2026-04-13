@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /admin
 
-Sitemap: https://raj-trading.com/sitemap.xml
+Sitemap: https://therajtrading.com/sitemap.xml
