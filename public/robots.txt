@@ -1,5 +1,3 @@
 User-agent: *
 Allow: /
-Disallow: /admin
-
 Sitemap: https://therajtrading.com/sitemap.xml
