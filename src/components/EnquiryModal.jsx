@@ -58,7 +58,7 @@ const EnquiryModal = ({ product, isOpen, onClose }) => {
               ))}
 
               <motion.a 
-                href={`https://wa.me/${contactDetails.whatsapp}?text=Hi, I'm interested in the ${product.name}`}
+                href={`https://wa.me/${contactDetails.whatsapp}?text=${encodeURIComponent(`Hi, I'm interested in the ${product.category} shown here: ${product.src}`)}`}
                 target="_blank"
                 rel="noreferrer"
                 className="contact-btn whatsapp-btn"
