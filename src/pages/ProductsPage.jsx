@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import ProductGrid from '../components/ProductGrid';
 import galleryData from '../data/galleryData.json';
 import PageTransition from '../components/PageTransition';
-import { motion } from 'framer-motion'; // eslint-disable-line no-unused-vars
+
 import './ProductsPage.css';
 
 const ProductsPage = ({ onEnquiry }) => {

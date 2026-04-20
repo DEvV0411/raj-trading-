@@ -44,21 +44,40 @@ async function syncWithCloudinary() {
     const finalAssets = [];
     const seenCoreIds = new Set();
     
+    // helper to get core product ID without Cloudinary's random suffixes or copy numbers
+    const getCoreId = (publicId) => {
+        // Strip common copy patterns: _1, _v2, etc., and random 6-character unique suffixes
+        // Example: "Bangle_1_abcd12" -> "Bangle"
+        return publicId
+            .replace(/_[a-zA-Z0-9]{6}$/, '') // Strip random suffix (often 6 chars)
+            .replace(/_[0-9]+$/, '')        // Strip copy number (_1)
+            .replace(/_v[0-9]+$/, '')        // Strip version (_v1)
+    };
+
     // Priority 1: Keep everything already organized in a folder
     for (const asset of folderAssets) {
-        // Strip versioning suffixes (e.g. _op191s) to identify core product
-        const coreId = asset.public_id.split('_').slice(0, -1).join('_') || asset.public_id;
+        // Filter out non-product files (like .html dumps)
+        if (asset.format === 'html' || asset.public_id.includes('.html')) continue;
+
+        const coreId = getCoreId(asset.public_id);
+        
+        if (seenCoreIds.has(coreId)) {
+            console.log(`⏩ Skipping duplicate folder asset: ${asset.public_id} (Core: ${coreId})`);
+            continue;
+        }
+
         finalAssets.push(asset);
         seenCoreIds.add(coreId);
     }
     
     // Priority 2: Only keep root assets if they are UNIQUE (not duplicates of folder items)
-    // Actually, per user request, we want to AVOID General Collection entirely.
-    // So we only keep root assets if they match a legacy naming rule or are definitely unique.
     for (const asset of rootAssets) {
-        const coreId = asset.public_id.split('_').slice(0, -1).join('_') || asset.public_id;
+        // Filter out non-product files
+        if (asset.format === 'html' || asset.public_id.includes('.html')) continue;
+
+        const coreId = getCoreId(asset.public_id);
         
-        // If we've already seen this product in a folder, ignore this root duplicate
+        // If we've already seen this product (even in root or folder), ignore
         if (seenCoreIds.has(coreId)) continue;
         
         // Also check for prefix matches in filename for Bangle/Necklace etc.
@@ -81,11 +100,7 @@ async function syncWithCloudinary() {
       
       let category = asset.asset_folder || "";
 
-      if (category) {
-          category = category.split(' ')
-                            .map(w => w.charAt(0).toUpperCase() + w.slice(1))
-                            .join(' ');
-      } else {
+      if (!category) {
          // Keyword backup only for unique root files
          if (lowerId.includes('bangle')) category = "Bangle Stand";
          else if (lowerId.includes('necklace') || /n[0-9]_/.test(lowerId) || lowerId.includes('dsc03937')) category = "Necklace Display";
@@ -102,13 +117,15 @@ async function syncWithCloudinary() {
          else if (lowerId.includes('gift') || lowerId.includes('box')) category = "Gift Box";
          else if (lowerId.includes('sample')) category = "Sample Tray";
          else if (lowerId.includes('hairband')) category = "Hairband Stand";
-         else continue; // SKIP anything that doesn't belong to a folder or match a key keyword
+         else continue;
       }
 
-      // Cleanup
-      category = category.split(' ')
-                         .map(w => w.charAt(0).toUpperCase() + w.slice(1))
-                         .join(' ');
+      // Final Formatting of Category Name (Title Case)
+      category = category.replace(/[/_-]/g, ' ')
+                         .split(' ')
+                         .map(w => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase())
+                         .join(' ')
+                         .trim();
 
       const format = asset.format || 'jpg';
       const imageUrl = `https://res.cloudinary.com/${process.env.VITE_CLOUDINARY_CLOUD_NAME}/image/upload/f_auto,q_auto/${publicId}.${format}`;
@@ -117,7 +134,7 @@ async function syncWithCloudinary() {
         id: `${category.replace(/ /g, '-')}-${publicId.split('/').pop()}.${format}`,
         src: imageUrl,
         category: category,
-        name: category
+        name: category // Name is strictly the folder/category name
       });
       activeCategories.add(category);
     }
@@ -138,6 +155,7 @@ async function syncWithCloudinary() {
 
   } catch (error) {
     console.error('❌ Deduplication Sync failed:', error.message);
+    console.error(error.stack);
   }
 }
 

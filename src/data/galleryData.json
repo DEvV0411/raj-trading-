@@ -72,12 +72,6 @@
       "name": "Earing Stand"
     },
     {
-      "id": "Earing-Stand-Earing_stand_4.jpg",
-      "src": "https://res.cloudinary.com/deh60mmnv/image/upload/f_auto,q_auto/Earing_stand_4.jpg",
-      "category": "Earing Stand",
-      "name": "Earing Stand"
-    },
-    {
       "id": "Earing-Stand-Earing_Stand_3.jpg",
       "src": "https://res.cloudinary.com/deh60mmnv/image/upload/f_auto,q_auto/Earing_Stand_3.jpg",
       "category": "Earing Stand",
@@ -216,20 +210,8 @@
       "name": "Pendant Stand"
     },
     {
-      "id": "Necklace-Display-PHOTO-2026-03-22-18-34-22_nw137l.jpg",
-      "src": "https://res.cloudinary.com/deh60mmnv/image/upload/f_auto,q_auto/PHOTO-2026-03-22-18-34-22_nw137l.jpg",
-      "category": "Necklace Display",
-      "name": "Necklace Display"
-    },
-    {
       "id": "Kada-Tray-PHOTO-2026-03-22-18-34-25_hk9muq.jpg",
       "src": "https://res.cloudinary.com/deh60mmnv/image/upload/f_auto,q_auto/PHOTO-2026-03-22-18-34-25_hk9muq.jpg",
-      "category": "Kada Tray",
-      "name": "Kada Tray"
-    },
-    {
-      "id": "Kada-Tray-PHOTO-2026-03-22-18-34-23_jlt1xc.jpg",
-      "src": "https://res.cloudinary.com/deh60mmnv/image/upload/f_auto,q_auto/PHOTO-2026-03-22-18-34-23_jlt1xc.jpg",
       "category": "Kada Tray",
       "name": "Kada Tray"
     },
@@ -246,32 +228,8 @@
       "name": "Kada Tray"
     },
     {
-      "id": "Kada-Tray-Kada_Tray_buhb7o.jpg",
-      "src": "https://res.cloudinary.com/deh60mmnv/image/upload/f_auto,q_auto/Kada_Tray_buhb7o.jpg",
-      "category": "Kada Tray",
-      "name": "Kada Tray"
-    },
-    {
-      "id": "Jewellery-Tray-PHOTO-2026-03-22-18-34-23_axoxlj.jpg",
-      "src": "https://res.cloudinary.com/deh60mmnv/image/upload/f_auto,q_auto/PHOTO-2026-03-22-18-34-23_axoxlj.jpg",
-      "category": "Jewellery Tray",
-      "name": "Jewellery Tray"
-    },
-    {
-      "id": "Jewellery-Tray-PHOTO-2026-03-22-18-34-21_apeu48.jpg",
-      "src": "https://res.cloudinary.com/deh60mmnv/image/upload/f_auto,q_auto/PHOTO-2026-03-22-18-34-21_apeu48.jpg",
-      "category": "Jewellery Tray",
-      "name": "Jewellery Tray"
-    },
-    {
       "id": "Jewellery-Tray-PHOTO-2026-03-22-18-34-17_jhrysr.jpg",
       "src": "https://res.cloudinary.com/deh60mmnv/image/upload/f_auto,q_auto/PHOTO-2026-03-22-18-34-17_jhrysr.jpg",
-      "category": "Jewellery Tray",
-      "name": "Jewellery Tray"
-    },
-    {
-      "id": "Jewellery-Tray-PHOTO-2026-03-22-18-34-24_heiwvm.jpg",
-      "src": "https://res.cloudinary.com/deh60mmnv/image/upload/f_auto,q_auto/PHOTO-2026-03-22-18-34-24_heiwvm.jpg",
       "category": "Jewellery Tray",
       "name": "Jewellery Tray"
     },
@@ -300,44 +258,14 @@
       "name": "Gift Box"
     },
     {
-      "id": "Gift-Box-PHOTO-2026-03-22-18-34-11_n4kfko.jpg",
-      "src": "https://res.cloudinary.com/deh60mmnv/image/upload/f_auto,q_auto/PHOTO-2026-03-22-18-34-11_n4kfko.jpg",
-      "category": "Gift Box",
-      "name": "Gift Box"
-    },
-    {
       "id": "Earing-Stand-3_way_stand_1_lmhgho.png",
       "src": "https://res.cloudinary.com/deh60mmnv/image/upload/f_auto,q_auto/3_way_stand_1_lmhgho.png",
       "category": "Earing Stand",
       "name": "Earing Stand"
     },
     {
-      "id": "Earing-Stand-PHOTO-2026-03-22-18-34-22_u8uqgp.jpg",
-      "src": "https://res.cloudinary.com/deh60mmnv/image/upload/f_auto,q_auto/PHOTO-2026-03-22-18-34-22_u8uqgp.jpg",
-      "category": "Earing Stand",
-      "name": "Earing Stand"
-    },
-    {
-      "id": "Earing-Stand-PHOTO-2026-03-22-18-34-22_1_hbh1qb.jpg",
-      "src": "https://res.cloudinary.com/deh60mmnv/image/upload/f_auto,q_auto/PHOTO-2026-03-22-18-34-22_1_hbh1qb.jpg",
-      "category": "Earing Stand",
-      "name": "Earing Stand"
-    },
-    {
-      "id": "Earing-Stand-PHOTO-2026-03-22-18-34-17_jx97jp.jpg",
-      "src": "https://res.cloudinary.com/deh60mmnv/image/upload/f_auto,q_auto/PHOTO-2026-03-22-18-34-17_jx97jp.jpg",
-      "category": "Earing Stand",
-      "name": "Earing Stand"
-    },
-    {
       "id": "Earing-Stand-PHOTO-2026-03-22-18-34-12_nvshuw.jpg",
       "src": "https://res.cloudinary.com/deh60mmnv/image/upload/f_auto,q_auto/PHOTO-2026-03-22-18-34-12_nvshuw.jpg",
-      "category": "Earing Stand",
-      "name": "Earing Stand"
-    },
-    {
-      "id": "Earing-Stand-PHOTO-2026-03-22-18-34-07_y0dyax.jpg",
-      "src": "https://res.cloudinary.com/deh60mmnv/image/upload/f_auto,q_auto/PHOTO-2026-03-22-18-34-07_y0dyax.jpg",
       "category": "Earing Stand",
       "name": "Earing Stand"
     },
@@ -354,50 +282,8 @@
       "name": "Earing Stand"
     },
     {
-      "id": "Earing-Stand-PHOTO-2026-03-22-18-34-05_2_oiadny.jpg",
-      "src": "https://res.cloudinary.com/deh60mmnv/image/upload/f_auto,q_auto/PHOTO-2026-03-22-18-34-05_2_oiadny.jpg",
-      "category": "Earing Stand",
-      "name": "Earing Stand"
-    },
-    {
-      "id": "Earing-Stand-PHOTO-2026-03-22-18-34-05_1_q08dh8.jpg",
-      "src": "https://res.cloudinary.com/deh60mmnv/image/upload/f_auto,q_auto/PHOTO-2026-03-22-18-34-05_1_q08dh8.jpg",
-      "category": "Earing Stand",
-      "name": "Earing Stand"
-    },
-    {
-      "id": "Earing-Stand-Earing_Stand_qr1nf5.jpg",
-      "src": "https://res.cloudinary.com/deh60mmnv/image/upload/f_auto,q_auto/Earing_Stand_qr1nf5.jpg",
-      "category": "Earing Stand",
-      "name": "Earing Stand"
-    },
-    {
       "id": "Chain-Stand-PHOTO-2026-03-22-18-34-19_ydijow.jpg",
       "src": "https://res.cloudinary.com/deh60mmnv/image/upload/f_auto,q_auto/PHOTO-2026-03-22-18-34-19_ydijow.jpg",
-      "category": "Chain Stand",
-      "name": "Chain Stand"
-    },
-    {
-      "id": "Chain-Stand-PHOTO-2026-03-22-18-34-26_tua2v3.jpg",
-      "src": "https://res.cloudinary.com/deh60mmnv/image/upload/f_auto,q_auto/PHOTO-2026-03-22-18-34-26_tua2v3.jpg",
-      "category": "Chain Stand",
-      "name": "Chain Stand"
-    },
-    {
-      "id": "Chain-Stand-PHOTO-2026-03-22-18-34-19_1_yyxila.jpg",
-      "src": "https://res.cloudinary.com/deh60mmnv/image/upload/f_auto,q_auto/PHOTO-2026-03-22-18-34-19_1_yyxila.jpg",
-      "category": "Chain Stand",
-      "name": "Chain Stand"
-    },
-    {
-      "id": "Chain-Stand-PHOTO-2026-03-22-18-34-15_h5icq3.jpg",
-      "src": "https://res.cloudinary.com/deh60mmnv/image/upload/f_auto,q_auto/PHOTO-2026-03-22-18-34-15_h5icq3.jpg",
-      "category": "Chain Stand",
-      "name": "Chain Stand"
-    },
-    {
-      "id": "Chain-Stand-PHOTO-2026-03-22-18-34-14_a3uazj.jpg",
-      "src": "https://res.cloudinary.com/deh60mmnv/image/upload/f_auto,q_auto/PHOTO-2026-03-22-18-34-14_a3uazj.jpg",
       "category": "Chain Stand",
       "name": "Chain Stand"
     },
@@ -412,24 +298,6 @@
       "src": "https://res.cloudinary.com/deh60mmnv/image/upload/f_auto,q_auto/Chain_Tray_tkrhzw.jpg",
       "category": "Chain Stand",
       "name": "Chain Stand"
-    },
-    {
-      "id": "Chain-Stand-PHOTO-2026-03-22-18-34-12_csgelt.jpg",
-      "src": "https://res.cloudinary.com/deh60mmnv/image/upload/f_auto,q_auto/PHOTO-2026-03-22-18-34-12_csgelt.jpg",
-      "category": "Chain Stand",
-      "name": "Chain Stand"
-    },
-    {
-      "id": "Chain-Stand-PHOTO-2026-03-22-18-34-07_bu81hq.jpg",
-      "src": "https://res.cloudinary.com/deh60mmnv/image/upload/f_auto,q_auto/PHOTO-2026-03-22-18-34-07_bu81hq.jpg",
-      "category": "Chain Stand",
-      "name": "Chain Stand"
-    },
-    {
-      "id": "Bangle-Stand-Replace_the_M_with_K_-_Google_Gemini_xebvuw.html.html",
-      "src": "https://res.cloudinary.com/deh60mmnv/image/upload/f_auto,q_auto/Replace_the_M_with_K_-_Google_Gemini_xebvuw.html.html",
-      "category": "Bangle Stand",
-      "name": "Bangle Stand"
     },
     {
       "id": "Bangle-Stand-ec500b2d-728a-44ed-92d2-59189a1a6804_khh3cx.jpg",
@@ -462,5 +330,5 @@
       "name": "Sample Tray"
     }
   ],
-  "lastUpdated": "2026-04-11T10:53:50.646Z"
+  "lastUpdated": "2026-04-20T17:40:31.056Z"
 }

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './ProductCard.css';
 import './ImageZoom.css';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion'; // eslint-disable-line no-unused-vars
 
 const ProductCard = ({ product, onEnquiry, variants }) => {
   const [imageError, setImageError] = useState(false);
